@@ -1,0 +1,24 @@
+<div style="margin: 0 100px; margin-top: 2rem;">
+    <h1>{{title}} - {{data  | date: 'dd/MM/yyyy'  }} </h1>  
+    <table>
+      <tr>
+        <td>Placa</td>
+        <td>Modelo</td>
+        <td>Locatário</td>
+        <td>Descrição</td>
+        <td>Valor</td>
+      </tr>
+      <tr *ngFor="let item of despesaList">
+        <td> {{item.placa.toUpperCase()}} </td>
+        <td> {{item.modelo.toUpperCase()}} </td>
+        <td> {{item.locatario.toUpperCase()}} </td>
+        <td> {{item.descricao.toUpperCase()}} </td>
+        <td> {{item.valor | currency:'BRL'}} </td>
+        <td> {{item.tipo}} </td>
+      </tr>
+    </table>
+    <strong > Total : {{total | currency:'BRL'}}</strong><br>
+    <strong> M : {{totalM | currency:'BRL'}}</strong><br>
+    <strong> G : {{totalG | currency:'BRL'}}</strong><br>
+    <strong> M/G : {{totalMG | currency:'BRL'}}</strong>  
+  </div>

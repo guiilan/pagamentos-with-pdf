@@ -1,0 +1,60 @@
+<mat-toolbar>
+    <h1>
+        Pagamentos Semanais
+    </h1>
+</mat-toolbar>
+<div class="dad-container">
+    <div class="form">
+        <mat-form-field class="full-width" appearance="fill">
+          <mat-label>Placa</mat-label>
+          <input [(ngModel)]="despesaItem.placa" type="text" matInput  placeholder="AAAA-0000">
+        </mat-form-field>
+
+        <mat-form-field class="full-width" appearance="fill">
+            <mat-label>Modelo</mat-label>
+            <input [(ngModel)]="despesaItem.modelo" type="text" matInput  placeholder="GOL">
+          </mat-form-field>
+
+          <mat-form-field class="full-width" appearance="fill">
+            <mat-label>Locatario</mat-label>
+            <input [(ngModel)]="despesaItem.locatario" type="text" matInput  placeholder="ARACAJU">
+          </mat-form-field>
+
+          <mat-form-field class="full-width" appearance="fill">
+            <mat-label>Valor</mat-label>
+            <input [(ngModel)]="despesaItem.valor" type="number" matInput  placeholder="R$ 250,00">
+          </mat-form-field>
+
+          <mat-form-field class="full-width" appearance="fill">
+            <mat-label>Descrição</mat-label>
+            <input [(ngModel)]="despesaItem.descricao" type="text" matInput  placeholder="SERVIÇO">
+          </mat-form-field>
+
+          <mat-radio-group  [(ngModel)]="despesaItem.tipo" aria-label="Select an option">
+            <mat-radio-button value="M">M</mat-radio-button><br>
+            <mat-radio-button value="G">G</mat-radio-button><br>
+            <mat-radio-button checked value="M/G">M/G</mat-radio-button>
+          </mat-radio-group>
+    </div>
+    <button mat-raised-button color="primary" (click)="adicionar()">ADICIONAR</button>
+</div>
+<hr>
+<div class="dad-container">
+    <h3>
+        Despesas Adicionadas
+    </h3>
+    <div style="width: 60%;">
+        <div class="card-container" *ngFor="let item of despesas; let i = index">
+            <span> MODELO : {{item.modelo.toUpperCase()}}  - PLACA : {{item.placa.toUpperCase()}}</span> <br>
+            <span> LOCATÁRIO : {{item.locatario.toUpperCase()}} </span><br>
+            <span> DESCRIÇÃO : {{item.descricao.toUpperCase()}} </span><br>
+            <span> VALOR : {{item.valor | currency:'BRL'}} - {{item.tipo}} </span> <br>
+            <div class="container-button">
+              <button mat-raised-button color="warn" (click)="deletar(i)">DELETAR</button>
+            </div>
+        </div>
+    </div>
+    <button mat-raised-button color="primary" style="margin-top: 25px;" (click)="gerarpdf()">GERA PDF</button>
+</div>
+
+<div #pagamentoslistadPDF></div>
