@@ -26,16 +26,15 @@ export class MainComponent implements OnInit {
 
   }
 
-  public adicionar(){
-    if(this.despesaItem.modelo && this.despesaItem.valor && this.despesaItem.descricao && this.despesaItem.tipo){
+  public adicionar(despesa: Despesa): Despesa | undefined{
+    if(despesa.modelo && despesa.valor && despesa.descricao && despesa.tipo){
       this.despesas.push(this.despesaItem)
-      this.despesaItem = new Despesa()
-    }
-    console.log(this.despesas)
+      return this.despesaItem = new Despesa()
+    } return ;
   }
 
-  deletar(i){
-    this.despesas.splice(i, 1)
+  deletar(i): Array<Despesa>{
+    return this.despesas.splice(i, 1)
   }
 
   gerarpdf(): void {
@@ -43,7 +42,7 @@ export class MainComponent implements OnInit {
     this.createPDF(title, this.despesas);
   }
 
-  private createPDF(title: string, despesas ): void {
+  public createPDF(title: string, despesas ): void {
     this.pagamentoslistadPDF.clear();
     const factory = this.resolver.resolveComponentFactory(PdfPageComponent);
     const componentRef = this.pagamentoslistadPDF.createComponent(factory);
@@ -61,7 +60,7 @@ export class MainComponent implements OnInit {
       componentRef.destroy();
     });
   }
-  private print(content: any, config: any): void {
+  public print(content: any, config: any): void {
     html2pdf()
       .set(config)
       .from(content)

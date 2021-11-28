@@ -20,6 +20,7 @@ export class PdfPageComponent implements OnInit, AfterViewInit {
 
   constructor() { 
     this.data = new Date
+    this.despesaList = []
   }
 
   ngOnInit(): void {
