@@ -38,6 +38,6 @@ describe('PdfPageComponent', () => {
   })
 
   it('(U) gerarPdf()', () => {
-    expect(component.gerarpdf()).toEqual(component.createPDF(`Despesas Semanais`, component.despesas))
+    expect(component.gerarpdf()).toEqual(component.createPDF(`Despesas Semanais`, component.despesas, new Date()))
   })
 });

@@ -12,6 +12,10 @@ import { PdfPageComponent } from './components/pdf-page/pdf-page.component';
 import ptBr from '@angular/common/locales/pt';
 import { registerLocaleData } from '@angular/common';
 import {MatRadioModule} from '@angular/material/radio';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatSelectModule} from '@angular/material/select';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+
 
 registerLocaleData(ptBr);
 @NgModule({
@@ -28,7 +32,10 @@ registerLocaleData(ptBr);
     MatInputModule,
     MatButtonModule,
     FormsModule,
-    MatRadioModule
+    MatRadioModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    MatDatepickerModule
   ],
   providers: [{ provide: LOCALE_ID, useValue: 'pt' }],
   bootstrap: [AppComponent]

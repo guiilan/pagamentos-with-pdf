@@ -27,7 +27,7 @@
 
 hr{
     height:2px;
-    width: 60%;
+    width: 100%;
     border-width:0;
     color:gray;
     background-color:gray;
@@ -49,6 +49,7 @@ table{
     width: 100%;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     padding: 10px;
+    box-sizing: border-box;
     border-radius: 8px;
     margin-top: 15px;
 }

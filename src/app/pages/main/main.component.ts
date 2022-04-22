@@ -14,7 +14,8 @@ export class MainComponent implements OnInit {
   @ViewChild('pagamentoslistadPDF', {static: true, read: ViewContainerRef}) pagamentoslistadPDF: ViewContainerRef;
   public despesas : Despesa[]
   public despesaItem : Despesa
-  
+  public title: string;
+
   constructor(
     private readonly resolver: ComponentFactoryResolver
   ) {
@@ -25,6 +26,11 @@ export class MainComponent implements OnInit {
   ngOnInit(): void {
 
   }
+
+  setTitle(event){
+    this.title = event
+  }
+
 
   public adicionar(despesa: Despesa): Despesa | undefined{
     if(despesa.modelo && despesa.valor && despesa.descricao && despesa.tipo){
@@ -38,8 +44,14 @@ export class MainComponent implements OnInit {
   }
 
   gerarpdf(): void {
-    const title = `Despesas Semanais`;
-    this.createPDF(title, this.despesas);
+    this.title ? this.title : `Despesas Semanais`;
+    this.createPDF(this.title, this.despesas);
+  }
+
+  editPdf(despesa: Despesa){
+    this.despesaItem =  despesa
+    const index = this.despesas.indexOf(despesa)
+    this.deletar(index)
   }
 
   public createPDF(title: string, despesas ): void {

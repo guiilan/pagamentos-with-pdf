@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, AfterViewInit, ɵangular_packages_core_core_bj } from '@angular/core';
+import { Component, EventEmitter, OnInit, AfterViewInit } from '@angular/core';
 import { Despesa } from 'src/app/class/despesa';
 
 @Component({
@@ -15,6 +15,8 @@ export class PdfPageComponent implements OnInit, AfterViewInit {
   totalM: number = 0;
   totalG: number = 0;
   totalMG: number = 0;
+  totalC: number = 0;
+  totalCM: number = 0;
   data: Date;
   emitter: EventEmitter<void> = new EventEmitter();
 
@@ -35,6 +37,10 @@ export class PdfPageComponent implements OnInit, AfterViewInit {
         this.totalG = this.totalG + obj.valor
       }if(obj.tipo == "M/G"){
         this.totalMG = this.totalMG + obj.valor
+      }if(obj.tipo == "C"){
+        this.totalC = this.totalC + obj.valor
+      }if(obj.tipo == "C/M"){
+        this.totalCM = this.totalCM + obj.valor
       }
     })
 
